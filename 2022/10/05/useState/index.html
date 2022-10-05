@@ -10,7 +10,7 @@
   
   <title>
     
-      jsx语法规则 | my前端之路
+      useState | my前端之路
     
   </title>
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -111,8 +111,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>jsx语法规则</h2>
-  <p class="post-date">2022-10-04</p>
+  <h2>useState</h2>
+  <p class="post-date">2022-10-05</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -120,20 +120,15 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><h1 id="jsx-语法规则："><a href="#jsx-语法规则：" class="headerlink" title="jsx 语法规则："></a>jsx 语法规则：</h1><ol>
-<li>定义虚拟DOM时，不要写引号</li>
-<li>标签中混入js表达式时要用{}</li>
-<li>样式的类名指定不要用class， 要用className</li>
-<li>内联样式，要用style&#x3D;{ {key:value} }的样式去写</li>
-<li>只有一个根标签</li>
-<li>标签必须闭合</li>
-<li>标签首字母<ol>
-<li>若小写字母开头，则将该标签转为html中同名元素，若html中无该标签对应的同名元素，则报错</li>
-<li>若大写字母开头，react就去渲染对应的组件，若组件没有定义则报错</li>
-</ol>
-</li>
-</ol>
-</section>
+    <section class="markdown-content"><h1 id="全部代码"><a href="#全部代码" class="headerlink" title="全部代码"></a>全部代码</h1><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyComponent</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span>&#123;</span><br><span class="line">      state = &#123;</span><br><span class="line">        <span class="attr">isHot</span>: <span class="literal">true</span>,</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="title function_">change</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> isHot = !<span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">isHot</span>;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;<span class="attr">isHot</span>:isHot&#125;);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="title function_">render</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">          <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">h1</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span>=&gt;</span>this.change()&#125;&gt;今天天气很&#123;this.state.isHot?&quot;炎热&quot;:&quot;凉爽&quot;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">        )</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="代码细节点"><a href="#代码细节点" class="headerlink" title="代码细节点"></a>代码细节点</h1><h2 id="this-state-isHot"><a href="#this-state-isHot" class="headerlink" title="this.state.isHot"></a>this.state.isHot</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">isHot</span>?<span class="string">&quot;炎热&quot;</span>:<span class="string">&quot;凉爽&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="this-change"><a href="#this-change" class="headerlink" title="this.change()"></a>this.change()</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">onClick=&#123;<span class="function">()=&gt;</span><span class="variable language_">this</span>.<span class="title function_">change</span>()&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="this-state-isHot-1"><a href="#this-state-isHot-1" class="headerlink" title="this.state.isHot"></a>this.state.isHot</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> isHot = !<span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">isHot</span>;</span><br></pre></td></tr></table></figure>
+<p>注意：这里let不能省略，默认开启严格模式, 即’use strict’</p>
+<h1 id="this-setState"><a href="#this-setState" class="headerlink" title="this.setState"></a>this.setState</h1><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;<span class="attr">isHot</span>:isHot&#125;);</span><br></pre></td></tr></table></figure></section>
     <!-- Tags START -->
     
       <div class="tags">
@@ -151,17 +146,17 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2022/10/04/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BB%84%E4%BB%B6/">
+      <a class="nav-left" href="/2022/10/04/jsx%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99/">
         <span class="nav-arrow">← </span>
         
-          函数式组件
+          jsx语法规则
         
       </a>
     
     
-      <a class="nav-right" href="/2022/10/05/useState/">
+      <a class="nav-right" href="/2022/10/05/props%E7%88%B6%E4%BC%A0%E5%AD%90%E5%AD%90%E4%BC%A0%E7%88%B6/">
         
-          useState
+          props父传子子传父
         
         <span class="nav-arrow"> →</span>
       </a>
@@ -199,7 +194,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#jsx-%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99%EF%BC%9A"><span class="toc-nav-text">jsx 语法规则：</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%85%A8%E9%83%A8%E4%BB%A3%E7%A0%81"><span class="toc-nav-text">全部代码</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%BB%A3%E7%A0%81%E7%BB%86%E8%8A%82%E7%82%B9"><span class="toc-nav-text">代码细节点</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#this-state-isHot"><span class="toc-nav-text">this.state.isHot</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#this-change"><span class="toc-nav-text">this.change()</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#this-state-isHot-1"><span class="toc-nav-text">this.state.isHot</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#this-setState"><span class="toc-nav-text">this.setState</span></a></li></ol>
     
   </div>
 </aside>
@@ -209,7 +204,7 @@
 
 <script>
   (function () {
-    var url = 'http://example.com/2022/10/04/jsx语法规则/';
+    var url = 'http://example.com/2022/10/05/useState/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
