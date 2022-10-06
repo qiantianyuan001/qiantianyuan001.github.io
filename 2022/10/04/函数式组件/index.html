@@ -1,319 +1,76 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <!DOCTYPE html>
+<html lang="zh-cn">
+<head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-  <meta name="description" content="Qian&#39;s blog">
-  <meta name="keyword" content="hexo-theme, vuejs">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   
-    <link rel="shortcut icon" href="/css/images/logo.png">
+  <title>函数式组件 - my前端之路</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   
-  <title>
-    
-      函数式组件 | my前端之路
-    
-  </title>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
-  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <meta name="keywords" content=react>
+  
+  
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.02">
+  
+  
+    <link rel="alternate" href="/atom.xml " title="my前端之路" type="application/atom+xml">
+  
+
   
 <link rel="stylesheet" href="/css/style.css">
 
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
-  
-    
-<script src="/js/qrious.js"></script>
-
-  
-  
-  
-  
-    <!-- MathJax support START -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <!-- MathJax support END -->
-  
-
-
-  
-  
 <meta name="generator" content="Hexo 6.3.0"></head>
-<div class="wechat-share">
-  <img src="/css/images/logo.png" />
-</div>
   <body>
-    <header class="header fixed-header">
-  <div class="header-container">
-    <a class="home-link" href="/">
-      <div class="logo"></div>
-      <span>my前端之路</span>
-    </a>
-    <ul class="right-list">
+    <div class="container">
+      <header class="header">
+  <div class="blog-title">
+    <a href="/" class="logo">my前端之路</a>
+    <div class="subtitle"></div>
+  </div>
+  <nav class="navbar">
+    <ul class="menu">
       
-        <li class="list-item">
-          
-            <a href="/" class="item-link">Home</a>
-          
+        <li class="menu-item">
+          <a href="/" class="menu-item-link">Home</a>
         </li>
       
-        <li class="list-item">
-          
-            <a href="/archives/" class="item-link">Archives</a>
-          
+        <li class="menu-item">
+          <a href="/archives" class="menu-item-link">Archives</a>
         </li>
-      
       
     </ul>
-    <div class="menu">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </div>
-    <div class="menu-mask">
-      <ul class="menu-list">
-        
-          <li class="menu-item">
-            
-              <a href="/" class="menu-link">Home</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/archives/" class="menu-link">Archives</a>
-            
-          </li>
-        
-      </ul>
-    </div>
-    
-  </div>
+  </nav>
 </header>
-
-    <div id="article-banner">
-  <h2>函数式组件</h2>
-  <p class="post-date">2022-10-04</p>
-  <div class="arrow-down">
-    <a href="javascript:;"></a>
+<article class="post">
+  <div class="post-title">
+    <h1 class="article-title">函数式组件</h1>
   </div>
-</div>
-<main class="app-body flex-box">
-  <!-- Article START -->
-  <article class="post-article">
-    <section class="markdown-content"><h1 id="函数式组件代码"><a href="#函数式组件代码" class="headerlink" title="函数式组件代码"></a>函数式组件代码</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">Demo</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">return</span> (</span></span><br><span class="line"><span class="language-javascript">        <span class="language-xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>我是用函数定义的组件<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span></span><br><span class="line"><span class="language-javascript">      )</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">		<span class="comment">//渲染组件到页面</span></span></span><br><span class="line"><span class="language-javascript">		<span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">Demo</span>/&gt;</span></span>, <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#test&#x27;</span>));</span></span><br><span class="line"><span class="language-javascript">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+   <div class="post-meta">
+    <span class="post-time">2022-10-04</span>
+  </div>
+  <div class="post-content">
+    <h1 id="函数式组件代码"><a href="#函数式组件代码" class="headerlink" title="函数式组件代码"></a>函数式组件代码</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">Demo</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">return</span> (</span></span><br><span class="line"><span class="language-javascript">        <span class="language-xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>我是用函数定义的组件<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span></span><br><span class="line"><span class="language-javascript">      )</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">		<span class="comment">//渲染组件到页面</span></span></span><br><span class="line"><span class="language-javascript">		<span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">Demo</span>/&gt;</span></span>, <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#test&#x27;</span>));</span></span><br><span class="line"><span class="language-javascript">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h1 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h1><h2 id="函数名必须大写-如上面写的Demo"><a href="#函数名必须大写-如上面写的Demo" class="headerlink" title="函数名必须大写 如上面写的Demo"></a>函数名必须大写 如上面写的Demo</h2><p>否则报错：<br>Warning: Functions are not valid as a React child.</p>
 <h2 id="ReactDOM-render第一个参数是一个组件，必须加上-lt-Demo-x2F-gt"><a href="#ReactDOM-render第一个参数是一个组件，必须加上-lt-Demo-x2F-gt" class="headerlink" title="ReactDOM.render第一个参数是一个组件，必须加上&lt;Demo&#x2F;&gt;"></a>ReactDOM.render第一个参数是一个组件，必须加上&lt;Demo&#x2F;&gt;</h2><p>否则报错：<br>The tag &lt;demo&gt; is unrecognized in this browser.</p>
-<h2 id="Demo函数必须有返回值"><a href="#Demo函数必须有返回值" class="headerlink" title="Demo函数必须有返回值"></a>Demo函数必须有返回值</h2></section>
-    <!-- Tags START -->
-    
-      <div class="tags">
-        <span>Tags:</span>
-        
-  <a href="/tags#react" >
-    <span class="tag-code">react</span>
-  </a>
-
-      </div>
-    
-    <!-- Tags END -->
-    <!-- NAV START -->
-    
-  <div class="nav-container">
-    <!-- reverse left and right to put prev and next in a more logic postition -->
-    
-      <a class="nav-left" href="/2022/10/04/%E9%94%99%E8%AF%AF%EF%BC%9AFunctions-are-not-valid-as-a-React-child/">
-        <span class="nav-arrow">← </span>
-        
-          错误：Functions are not valid as a React child.
-        
-      </a>
-    
-    
-      <a class="nav-right" href="/2022/10/04/jsx%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99/">
-        
-          jsx语法规则
-        
-        <span class="nav-arrow"> →</span>
-      </a>
-    
+<h2 id="Demo函数必须有返回值"><a href="#Demo函数必须有返回值" class="headerlink" title="Demo函数必须有返回值"></a>Demo函数必须有返回值</h2>
   </div>
+  <div class="post-footer">
+    
+      <ul class="post-tag-list" itemprop="keywords"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/react/" rel="tag">react</a></li></ul>
+    
 
-    <!-- NAV END -->
-    <!-- 打赏 START -->
-    
-    <!-- 打赏 END -->
-    <!-- 二维码 START -->
-    
-      <div class="qrcode">
-        <canvas id="share-qrcode"></canvas>
-        <p class="notice">扫描二维码，分享此文章</p>
-      </div>
-    
-    <!-- 二维码 END -->
-    
-      <!-- Utterances START -->
-      <div id="utterances"></div>
-      <script src="https://utteranc.es/client.js"
-        repo=""
-        issue-term="pathname"
-        theme="github-light"
-        crossorigin="anonymous"
-        async></script>    
-      <!-- Utterances END -->
-    
-  </article>
-  <!-- Article END -->
-  <!-- Catalog START -->
-  
-    <aside class="catalog-container">
-  <div class="toc-main">
-    <strong class="toc-title">Catalog</strong>
-    
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BB%84%E4%BB%B6%E4%BB%A3%E7%A0%81"><span class="toc-nav-text">函数式组件代码</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="toc-nav-text">注意点</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%87%BD%E6%95%B0%E5%90%8D%E5%BF%85%E9%A1%BB%E5%A4%A7%E5%86%99-%E5%A6%82%E4%B8%8A%E9%9D%A2%E5%86%99%E7%9A%84Demo"><span class="toc-nav-text">函数名必须大写 如上面写的Demo</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ReactDOM-render%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8F%82%E6%95%B0%E6%98%AF%E4%B8%80%E4%B8%AA%E7%BB%84%E4%BB%B6%EF%BC%8C%E5%BF%85%E9%A1%BB%E5%8A%A0%E4%B8%8A-lt-Demo-x2F-gt"><span class="toc-nav-text">ReactDOM.render第一个参数是一个组件，必须加上&lt;Demo&#x2F;&gt;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Demo%E5%87%BD%E6%95%B0%E5%BF%85%E9%A1%BB%E6%9C%89%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-nav-text">Demo函数必须有返回值</span></a></li></ol></li></ol>
-    
+    <a href="#top" class="top">Back to Top</a>
   </div>
-</aside>
-  
-  <!-- Catalog END -->
-</main>
-
-<script>
-  (function () {
-    var url = 'http://example.com/2022/10/04/函数式组件/';
-    var banner = ''
-    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
-      $('#article-banner').css({
-        'background-image': 'url(' + banner + ')'
-      })
-    } else {
-      $('#article-banner').geopattern(url)
-    }
-    $('.header').removeClass('fixed-header')
-
-    // error image
-    $(".markdown-content img").on('error', function() {
-      $(this).attr('src', '/css/images/error_icon.png')
-      $(this).css({
-        'cursor': 'default'
-      })
-    })
-
-    // zoom image
-    $(".markdown-content img").on('click', function() {
-      var src = $(this).attr('src')
-      if (src !== '/css/images/error_icon.png') {
-        var imageW = $(this).width()
-        var imageH = $(this).height()
-
-        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
-        zoom = zoom < 1 ? 1 : zoom
-        zoom = zoom > 2 ? 2 : zoom
-        var transY = (($(window).height() - imageH) / 2).toFixed(2)
-
-        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
-        $('.image-view-wrap').addClass('wrap-active')
-        $('.image-view-wrap img').css({
-          'width': `${imageW}`,
-          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
-        })
-        $('html').css('overflow', 'hidden')
-
-        $('.image-view-wrap').on('click', function() {
-          $(this).remove()
-          $('html').attr('style', '')
-        })
-      }
-    })
-  })();
-</script>
-
-
-  <script>
-    var qr = new QRious({
-      element: document.getElementById('share-qrcode'),
-      value: document.location.href
-    });
-  </script>
-
-
-
-
-
-
-    <div class="scroll-top">
-  <span class="arrow-icon"></span>
-</div>
-    <footer class="app-footer">
-  <p class="copyright">
-    &copy; 2022 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
-    <br>
-    <!--Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a>-->
-    
-  </p>
+</article>
+<footer>
+  &copy; 2022
+  <span class="author">
+    Qian
+  </span>
 </footer>
-
-<script>
-  function async(u, c) {
-    var d = document, t = 'script',
-      o = d.createElement(t),
-      s = d.getElementsByTagName(t)[0];
-    o.src = u;
-    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-    s.parentNode.insertBefore(o, s);
-  }
-</script>
-<script>
-  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
-    FastClick.attach(document.body);
-  })
-</script>
-
-<script>
-  var hasLine = 'true';
-  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
-    $('figure pre').each(function(i, block) {
-      var figure = $(this).parents('figure');
-      if (hasLine === 'false') {
-        figure.find('.gutter').hide();
-      }
-      hljs.configure({useBR: true});
-      var lang = figure.attr('class').split(' ')[1] || 'code';
-      var codeHtml = $(this).html();
-      var codeTag = document.createElement('code');
-      codeTag.className = lang;
-      codeTag.innerHTML = codeHtml;
-      $(this).attr('class', '').empty().html(codeTag);
-      figure.attr('data-lang', lang.toUpperCase());
-      hljs.highlightBlock(block);
-    });
-  })
-</script>
-<!-- Baidu Tongji -->
-
-
-<script src="/js/script.js"></script>
-
-
+    </div>
   </body>
 </html>

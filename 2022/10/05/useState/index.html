@@ -1,126 +1,57 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <!DOCTYPE html>
+<html lang="zh-cn">
+<head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-  <meta name="description" content="Qian&#39;s blog">
-  <meta name="keyword" content="hexo-theme, vuejs">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   
-    <link rel="shortcut icon" href="/css/images/logo.png">
+  <title>useState - my前端之路</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   
-  <title>
-    
-      useState | my前端之路
-    
-  </title>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
-  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <meta name="keywords" content=react>
+  
+  
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.02">
+  
+  
+    <link rel="alternate" href="/atom.xml " title="my前端之路" type="application/atom+xml">
+  
+
   
 <link rel="stylesheet" href="/css/style.css">
 
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
-  
-    
-<script src="/js/qrious.js"></script>
-
-  
-  
-  
-  
-    <!-- MathJax support START -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <!-- MathJax support END -->
-  
-
-
-  
-  
 <meta name="generator" content="Hexo 6.3.0"></head>
-<div class="wechat-share">
-  <img src="/css/images/logo.png" />
-</div>
   <body>
-    <header class="header fixed-header">
-  <div class="header-container">
-    <a class="home-link" href="/">
-      <div class="logo"></div>
-      <span>my前端之路</span>
-    </a>
-    <ul class="right-list">
+    <div class="container">
+      <header class="header">
+  <div class="blog-title">
+    <a href="/" class="logo">my前端之路</a>
+    <div class="subtitle"></div>
+  </div>
+  <nav class="navbar">
+    <ul class="menu">
       
-        <li class="list-item">
-          
-            <a href="/" class="item-link">Home</a>
-          
+        <li class="menu-item">
+          <a href="/" class="menu-item-link">Home</a>
         </li>
       
-        <li class="list-item">
-          
-            <a href="/archives/" class="item-link">Archives</a>
-          
+        <li class="menu-item">
+          <a href="/archives" class="menu-item-link">Archives</a>
         </li>
-      
       
     </ul>
-    <div class="menu">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </div>
-    <div class="menu-mask">
-      <ul class="menu-list">
-        
-          <li class="menu-item">
-            
-              <a href="/" class="menu-link">Home</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/archives/" class="menu-link">Archives</a>
-            
-          </li>
-        
-      </ul>
-    </div>
-    
-  </div>
+  </nav>
 </header>
-
-    <div id="article-banner">
-  <h2>useState</h2>
-  <p class="post-date">2022-10-05</p>
-  <div class="arrow-down">
-    <a href="javascript:;"></a>
+<article class="post">
+  <div class="post-title">
+    <h1 class="article-title">useState</h1>
   </div>
-</div>
-<main class="app-body flex-box">
-  <!-- Article START -->
-  <article class="post-article">
-    <section class="markdown-content"><h1 id="全部代码"><a href="#全部代码" class="headerlink" title="全部代码"></a>全部代码</h1><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyComponent</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span>&#123;</span><br><span class="line">      state = &#123;</span><br><span class="line">        <span class="attr">isHot</span>: <span class="literal">true</span>,</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="title function_">change</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> isHot = !<span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">isHot</span>;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;<span class="attr">isHot</span>:isHot&#125;);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="title function_">render</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">          <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">h1</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span>=&gt;</span>this.change()&#125;&gt;今天天气很&#123;this.state.isHot?&quot;炎热&quot;:&quot;凉爽&quot;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">        )</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+   <div class="post-meta">
+    <span class="post-time">2022-10-05</span>
+  </div>
+  <div class="post-content">
+    <h1 id="全部代码"><a href="#全部代码" class="headerlink" title="全部代码"></a>全部代码</h1><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyComponent</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span>&#123;</span><br><span class="line">      state = &#123;</span><br><span class="line">        <span class="attr">isHot</span>: <span class="literal">true</span>,</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="title function_">change</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> isHot = !<span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">isHot</span>;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;<span class="attr">isHot</span>:isHot&#125;);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="title function_">render</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">          <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">h1</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span>=&gt;</span>this.change()&#125;&gt;今天天气很&#123;this.state.isHot?&quot;炎热&quot;:&quot;凉爽&quot;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">        )</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h1 id="代码细节点"><a href="#代码细节点" class="headerlink" title="代码细节点"></a>代码细节点</h1><h2 id="this-state-isHot"><a href="#this-state-isHot" class="headerlink" title="this.state.isHot"></a>this.state.isHot</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">isHot</span>?<span class="string">&quot;炎热&quot;</span>:<span class="string">&quot;凉爽&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
 
@@ -128,196 +59,22 @@
 
 <h2 id="this-state-isHot-1"><a href="#this-state-isHot-1" class="headerlink" title="this.state.isHot"></a>this.state.isHot</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> isHot = !<span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">isHot</span>;</span><br></pre></td></tr></table></figure>
 <p>注意：这里let不能省略，默认开启严格模式, 即’use strict’</p>
-<h1 id="this-setState"><a href="#this-setState" class="headerlink" title="this.setState"></a>this.setState</h1><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;<span class="attr">isHot</span>:isHot&#125;);</span><br></pre></td></tr></table></figure></section>
-    <!-- Tags START -->
-    
-      <div class="tags">
-        <span>Tags:</span>
-        
-  <a href="/tags#react" >
-    <span class="tag-code">react</span>
-  </a>
-
-      </div>
-    
-    <!-- Tags END -->
-    <!-- NAV START -->
-    
-  <div class="nav-container">
-    <!-- reverse left and right to put prev and next in a more logic postition -->
-    
-      <a class="nav-left" href="/2022/10/04/jsx%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99/">
-        <span class="nav-arrow">← </span>
-        
-          jsx语法规则
-        
-      </a>
-    
-    
-      <a class="nav-right" href="/2022/10/05/props%E7%88%B6%E4%BC%A0%E5%AD%90%E5%AD%90%E4%BC%A0%E7%88%B6/">
-        
-          props父传子子传父
-        
-        <span class="nav-arrow"> →</span>
-      </a>
-    
+<h1 id="this-setState"><a href="#this-setState" class="headerlink" title="this.setState"></a>this.setState</h1><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;<span class="attr">isHot</span>:isHot&#125;);</span><br></pre></td></tr></table></figure>
   </div>
+  <div class="post-footer">
+    
+      <ul class="post-tag-list" itemprop="keywords"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/react/" rel="tag">react</a></li></ul>
+    
 
-    <!-- NAV END -->
-    <!-- 打赏 START -->
-    
-    <!-- 打赏 END -->
-    <!-- 二维码 START -->
-    
-      <div class="qrcode">
-        <canvas id="share-qrcode"></canvas>
-        <p class="notice">扫描二维码，分享此文章</p>
-      </div>
-    
-    <!-- 二维码 END -->
-    
-      <!-- Utterances START -->
-      <div id="utterances"></div>
-      <script src="https://utteranc.es/client.js"
-        repo=""
-        issue-term="pathname"
-        theme="github-light"
-        crossorigin="anonymous"
-        async></script>    
-      <!-- Utterances END -->
-    
-  </article>
-  <!-- Article END -->
-  <!-- Catalog START -->
-  
-    <aside class="catalog-container">
-  <div class="toc-main">
-    <strong class="toc-title">Catalog</strong>
-    
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%85%A8%E9%83%A8%E4%BB%A3%E7%A0%81"><span class="toc-nav-text">全部代码</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%BB%A3%E7%A0%81%E7%BB%86%E8%8A%82%E7%82%B9"><span class="toc-nav-text">代码细节点</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#this-state-isHot"><span class="toc-nav-text">this.state.isHot</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#this-change"><span class="toc-nav-text">this.change()</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#this-state-isHot-1"><span class="toc-nav-text">this.state.isHot</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#this-setState"><span class="toc-nav-text">this.setState</span></a></li></ol>
-    
+    <a href="#top" class="top">Back to Top</a>
   </div>
-</aside>
-  
-  <!-- Catalog END -->
-</main>
-
-<script>
-  (function () {
-    var url = 'http://example.com/2022/10/05/useState/';
-    var banner = ''
-    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
-      $('#article-banner').css({
-        'background-image': 'url(' + banner + ')'
-      })
-    } else {
-      $('#article-banner').geopattern(url)
-    }
-    $('.header').removeClass('fixed-header')
-
-    // error image
-    $(".markdown-content img").on('error', function() {
-      $(this).attr('src', '/css/images/error_icon.png')
-      $(this).css({
-        'cursor': 'default'
-      })
-    })
-
-    // zoom image
-    $(".markdown-content img").on('click', function() {
-      var src = $(this).attr('src')
-      if (src !== '/css/images/error_icon.png') {
-        var imageW = $(this).width()
-        var imageH = $(this).height()
-
-        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
-        zoom = zoom < 1 ? 1 : zoom
-        zoom = zoom > 2 ? 2 : zoom
-        var transY = (($(window).height() - imageH) / 2).toFixed(2)
-
-        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
-        $('.image-view-wrap').addClass('wrap-active')
-        $('.image-view-wrap img').css({
-          'width': `${imageW}`,
-          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
-        })
-        $('html').css('overflow', 'hidden')
-
-        $('.image-view-wrap').on('click', function() {
-          $(this).remove()
-          $('html').attr('style', '')
-        })
-      }
-    })
-  })();
-</script>
-
-
-  <script>
-    var qr = new QRious({
-      element: document.getElementById('share-qrcode'),
-      value: document.location.href
-    });
-  </script>
-
-
-
-
-
-
-    <div class="scroll-top">
-  <span class="arrow-icon"></span>
-</div>
-    <footer class="app-footer">
-  <p class="copyright">
-    &copy; 2022 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
-    <br>
-    <!--Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a>-->
-    
-  </p>
+</article>
+<footer>
+  &copy; 2022
+  <span class="author">
+    Qian
+  </span>
 </footer>
-
-<script>
-  function async(u, c) {
-    var d = document, t = 'script',
-      o = d.createElement(t),
-      s = d.getElementsByTagName(t)[0];
-    o.src = u;
-    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-    s.parentNode.insertBefore(o, s);
-  }
-</script>
-<script>
-  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
-    FastClick.attach(document.body);
-  })
-</script>
-
-<script>
-  var hasLine = 'true';
-  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
-    $('figure pre').each(function(i, block) {
-      var figure = $(this).parents('figure');
-      if (hasLine === 'false') {
-        figure.find('.gutter').hide();
-      }
-      hljs.configure({useBR: true});
-      var lang = figure.attr('class').split(' ')[1] || 'code';
-      var codeHtml = $(this).html();
-      var codeTag = document.createElement('code');
-      codeTag.className = lang;
-      codeTag.innerHTML = codeHtml;
-      $(this).attr('class', '').empty().html(codeTag);
-      figure.attr('data-lang', lang.toUpperCase());
-      hljs.highlightBlock(block);
-    });
-  })
-</script>
-<!-- Baidu Tongji -->
-
-
-<script src="/js/script.js"></script>
-
-
+    </div>
   </body>
 </html>
