@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  
+  <title>受控与非受控组件 - my前端之路</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  
+  <meta name="keywords" content=react>
+  
+  
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.02">
+  
+  
+    <link rel="alternate" href="/atom.xml " title="my前端之路" type="application/atom+xml">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="container">
+      <header class="header">
+  <div class="blog-title">
+    <a href="/" class="logo">my前端之路</a>
+    <div class="subtitle"></div>
+  </div>
+  <nav class="navbar">
+    <ul class="menu">
+      
+        <li class="menu-item">
+          <a href="/" class="menu-item-link">Home</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/archives" class="menu-item-link">Archives</a>
+        </li>
+      
+    </ul>
+  </nav>
+</header>
+<article class="post">
+  <div class="post-title">
+    <h1 class="article-title">受控与非受控组件</h1>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2022-10-07</span>
+  </div>
+  <div class="post-content">
+    <h1 id="非受控组件"><a href="#非受控组件" class="headerlink" title="非受控组件"></a>非受控组件</h1><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyComponent</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span>&#123;</span><br><span class="line">			<span class="title function_">handleSubmit</span>(<span class="params">event</span>)&#123;</span><br><span class="line">				event.<span class="title function_">preventDefault</span>()</span><br><span class="line">				<span class="title function_">alert</span>(<span class="variable language_">this</span>.<span class="property">username</span>.<span class="property">value</span>);</span><br><span class="line">				<span class="title function_">alert</span>(<span class="variable language_">this</span>.<span class="property">password</span>.<span class="property">value</span>);</span><br><span class="line">			&#125;</span><br><span class="line">      <span class="title function_">render</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">          <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">						<span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;&quot;</span> <span class="attr">onSubmit</span>=<span class="string">&#123;()</span>=&gt;</span>this.handleSubmit(event)&#125;&gt;</span></span><br><span class="line"><span class="language-xml">							用户名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">ref</span>=<span class="string">&#123;c</span>=&gt;</span>this.username = c&#125; type=&quot;text&quot;/&gt;</span></span><br><span class="line"><span class="language-xml">							密码：<span class="tag">&lt;<span class="name">input</span> <span class="attr">ref</span>=<span class="string">&#123;c</span>=&gt;</span>this.password = c&#125; type=&quot;text&quot;/&gt;</span></span><br><span class="line"><span class="language-xml">							<span class="tag">&lt;<span class="name">button</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">						<span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">        )</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">MyComponent</span>/&gt;</span></span>, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;test&quot;</span>));</span><br></pre></td></tr></table></figure>
+<p>使用ref，现用现取的叫做非受控组件</p>
+<h2 id="关键代码"><a href="#关键代码" class="headerlink" title="关键代码"></a>关键代码</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ref=&#123;<span class="function"><span class="params">c</span>=&gt;</span><span class="variable language_">this</span>.<span class="property">username</span> = c&#125;</span><br><span class="line"><span class="title function_">alert</span>(<span class="variable language_">this</span>.<span class="property">username</span>.<span class="property">value</span>);</span><br></pre></td></tr></table></figure>
+
+<h1 id="受控组件"><a href="#受控组件" class="headerlink" title="受控组件"></a>受控组件</h1><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyComponent</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span>&#123;</span><br><span class="line">      state=&#123;</span><br><span class="line">        <span class="attr">username</span>:<span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="attr">password</span>:<span class="string">&quot;&quot;</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">			<span class="title function_">handleSubmit</span>(<span class="params">event</span>)&#123;</span><br><span class="line">				event.<span class="title function_">preventDefault</span>()</span><br><span class="line">				<span class="title function_">alert</span>(<span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">username</span>);</span><br><span class="line">				<span class="title function_">alert</span>(<span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">password</span>);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">      <span class="title function_">saveUsername</span>(<span class="params">event</span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;<span class="attr">username</span>: event.<span class="property">target</span>.<span class="property">value</span>&#125;);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="title function_">savePassword</span>(<span class="params">event</span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;<span class="attr">password</span>:event.<span class="property">target</span>.<span class="property">value</span>&#125;);</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="title function_">render</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">          <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">						<span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;&quot;</span> <span class="attr">onSubmit</span>=<span class="string">&#123;()</span>=&gt;</span>this.handleSubmit(event)&#125;&gt;</span></span><br><span class="line"><span class="language-xml">							用户名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">onChange</span>=<span class="string">&#123;()</span>=&gt;</span>this.saveUsername(event)&#125; type=&quot;text&quot;/&gt;</span></span><br><span class="line"><span class="language-xml">							密码：<span class="tag">&lt;<span class="name">input</span> <span class="attr">onChange</span>=<span class="string">&#123;()</span>=&gt;</span>this.savePassword(event)&#125; type=&quot;text&quot;/&gt;</span></span><br><span class="line"><span class="language-xml">							<span class="tag">&lt;<span class="name">button</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">						<span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">        )</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">MyComponent</span>/&gt;</span></span>, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;test&quot;</span>));</span><br></pre></td></tr></table></figure>
+<p>使用State, 把数据存进state再用的叫做受控组件</p>
+<h2 id="关键代码-1"><a href="#关键代码-1" class="headerlink" title="关键代码"></a>关键代码</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">state=&#123;<span class="attr">username</span>:<span class="string">&quot;&quot;</span>,&#125;</span><br><span class="line">onChange=&#123;<span class="function">()=&gt;</span><span class="variable language_">this</span>.<span class="title function_">saveUsername</span>(event)&#125;</span><br><span class="line"><span class="title function_">saveUsername</span>(<span class="params">event</span>)&#123;</span><br><span class="line"> <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;<span class="attr">username</span>:event.<span class="property">target</span>.<span class="property">value</span>&#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">alert</span>(<span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">username</span>);</span><br></pre></td></tr></table></figure>
+  </div>
+  <div class="post-footer">
+    
+      <ul class="post-tag-list" itemprop="keywords"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/react/" rel="tag">react</a></li></ul>
+    
+
+    <a href="#top" class="top">Back to Top</a>
+  </div>
+</article>
+<footer>
+  &copy; 2022
+  <span class="author">
+    Qian
+  </span>
+</footer>
+    </div>
+  </body>
+</html>
