@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  
+  <title>react生命周期（新版本） - my前端之路</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  
+  <meta name="keywords" content=react>
+  
+  
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.02">
+  
+  
+    <link rel="alternate" href="/atom.xml " title="my前端之路" type="application/atom+xml">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="container">
+      <header class="header">
+  <div class="blog-title">
+    <a href="/" class="logo">my前端之路</a>
+    <div class="subtitle"></div>
+  </div>
+  <nav class="navbar">
+    <ul class="menu">
+      
+        <li class="menu-item">
+          <a href="/" class="menu-item-link">Home</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/archives" class="menu-item-link">Archives</a>
+        </li>
+      
+    </ul>
+  </nav>
+</header>
+<article class="post">
+  <div class="post-title">
+    <h1 class="article-title">react生命周期（新版本）</h1>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2022-10-12</span>
+  </div>
+  <div class="post-content">
+    <h1 id="初始化阶段：由ReactDOM-render-触发初次渲染"><a href="#初始化阶段：由ReactDOM-render-触发初次渲染" class="headerlink" title="初始化阶段：由ReactDOM.render()触发初次渲染"></a>初始化阶段：由ReactDOM.render()触发初次渲染</h1><ol>
+<li>constructor()</li>
+<li>getDerivedStateFromProps <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="title function_">getDerivedStateFromProps</span>(<span class="params">props,state</span>)&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;getDerivedStateFromProps&#x27;</span>,props,state);</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>render()</li>
+<li>componentDidMount()</li>
+</ol>
+<h1 id="更新阶段：由组件内部this-setState-或父组件重新render触发"><a href="#更新阶段：由组件内部this-setState-或父组件重新render触发" class="headerlink" title="更新阶段：由组件内部this.setState()或父组件重新render触发"></a>更新阶段：由组件内部this.setState()或父组件重新render触发</h1><ol>
+<li>getDerivedStateFromProps<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="title function_">getDerivedStateFromProps</span>(<span class="params">props,state</span>)&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;getDerivedStateFromProps&#x27;</span>,props,state);</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>shouldComponentUpdate()<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">shouldComponentUpdate</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Count---shouldComponentUpdate&#x27;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>render()</li>
+<li>getSnapshotBeforeUpdate<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">getSnapshotBeforeUpdate</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;getSnapshotBeforeUpdate&#x27;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&#x27;atguigu&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>componentDidUpdate()<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">componentDidUpdate</span>(<span class="params">preProps,preState,snapshotValue</span>)&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Count---componentDidUpdate&#x27;</span>,preProps,preState,snapshotValue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="卸载组件：由ReactDOM-unmountComponentAtNode-触发"><a href="#卸载组件：由ReactDOM-unmountComponentAtNode-触发" class="headerlink" title="卸载组件：由ReactDOM.unmountComponentAtNode()触发"></a>卸载组件：由ReactDOM.unmountComponentAtNode()触发</h1><ol>
+<li>componentWillUnmount()</li>
+</ol>
+
+  </div>
+  <div class="post-footer">
+    
+      <ul class="post-tag-list" itemprop="keywords"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/react/" rel="tag">react</a></li></ul>
+    
+
+    <a href="#top" class="top">Back to Top</a>
+  </div>
+</article>
+<footer>
+  &copy; 2022
+  <span class="author">
+    Qian
+  </span>
+</footer>
+    </div>
+  </body>
+</html>
